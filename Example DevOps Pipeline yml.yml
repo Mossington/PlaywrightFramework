@@ -1,0 +1,64 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+    displayName: "checkou Repo"
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "18"
+    displayName: "Install Node.js"
+
+  - script: echo  "##vso[task.setvariable variable=ENV]preprod"
+    displayName: "Set Environment Variable"
+
+  - script: npm ci
+    displayName: "Running Command npm ci"
+
+  - script: |
+      npm install -g allure-commandline
+      allure --version
+    displayName: "Install Allure Commandline and check version"
+
+  - script: |
+      npx playwright install --with-deps chromium
+    displayName: "Install Playwright Chromium browser"
+
+  - script: |
+      npx playwright test
+    displayName: "Execute Playwright test"
+    env:
+      CI: "true"
+      ALLURE_RESULTS: "$(Build.SourcesDirectory)/allure-results"
+
+  - script: ls -laR $(Build.SourcesDirectory)/test-results/
+    displayName: "List Test Results and Screenshots Recursively"
+    condition: succeededOrFailed()
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: "JUnit"
+      testResultsFiles: "**/results.xml"
+      failTaskOnFailedTests: true
+      testRunTitle: "Playwright Test Results"
+    condition: succeededOrFailed()
+    displayName: "Publish Test Results"
+
+  - script: allure generate $(System.DefaultWorkingDirectory)/allure-results --output $(System.DefaultWorkingDirectory)/allure-report
+    displayName: "Generate Allure report"
+    condition: succeededOrFailed()
+
+  - task: PublishBuildArtifacts@1
+    condition: succeededOrFailed()
+    inputs:
+      PathtoPublish: "$(System.DefaultWorkingDirectory)/allure-report"
+      ArtifactName: "AllureReport"
+    displayName: "Publish Allure report"
+
+  - task: PublishAllureReport@1
+    displayName: "Publish Allure Report to Dashboard"
+    condition: succeeded()
