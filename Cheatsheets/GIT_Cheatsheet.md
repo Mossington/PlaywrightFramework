@@ -2,7 +2,7 @@
 
 <br>
 
-#### Link to Git cheatsheet
+#### Link to GIT cheatsheet
 
 https://education.github.com/git-cheat-sheet-education.pdf
 
@@ -29,6 +29,8 @@ set an email address that will be associated with each history marker
 retrieve an entire repository from a hosted location via URL
 
 - git clone [url]
+
+<br>
 
 ##### STAGE & SNAPSHOT
 

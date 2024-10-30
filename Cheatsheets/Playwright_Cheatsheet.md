@@ -4,8 +4,9 @@
 
 <br>
 
-#### Initiate a Browser
+#### Initiate Browser and navigate to url
 
+- https://playwright.dev/docs/api/class-browser
 - await page.goto('URL_Here');
 
 <br>
@@ -35,7 +36,7 @@ https://playwright.dev/docs/input#introduction
 
 <br>
 
-##### Recommended built-in locators
+#### Recommended built-in locators
 
 | Locator                 | Description                                                                                   |
 | ----------------------- | --------------------------------------------------------------------------------------------- |
@@ -114,6 +115,32 @@ Example Test
 
 - https://playwright.dev/docs/running-tests
 
-Running tests from the console
-Running tests from the "Testing" option in the Primary side bar
-Debugging tests
+<br>
+
+#### Running tests from the console
+
+npx playwright test
+Runs the end-to-end tests.
+
+npx playwright test --ui
+Starts the interactive UI mode.
+
+npx playwright test --project=chromium
+Runs the tests only on Desktop Chrome.
+
+npx playwright test example
+Runs the tests in a specific file.
+
+npx playwright codegen
+Auto generate tests with Codegen.
+
+<br>
+
+#### Running tests from the "Testing" option in the Primary side bar
+
+<br>
+
+#### Debugging tests
+
+npx playwright test --debug
+Runs the tests in debug mode from the console.

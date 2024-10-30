@@ -1,0 +1,180 @@
+# PlaywrightFramework using Typescript - Setup
+
+<br>
+
+## Markdown Installer
+
+Before we start installing all the dependacies for Playwright, i've added in this section for installing Markdown. The layout of Markdown makes it easier for the "readme" to be followed and understood
+
+##### Installing the Markdown extenstion.
+
+- Searrch and download the markdown installer from the extenstions view.
+
+  <img src="Markkdown Notes.png" alt="Sample Image" width="400" height="300">
+
+<br>
+
+##### Creating a new Markdown document
+
+- Under your project, create a new file and save it as a .md format
+
+<br>
+
+##### Onpen the Markdown Preview tab
+
+- On your keyboard, press keys Ctrl+Shift+V
+- You can now click on the markdown preview tab and movwe it in to a side by side view with the markdown editor
+
+  Markdown Preview Enhanced
+
+<br>
+
+---
+
+<br>
+
+# Playwright Prerequisites
+
+This section documents all key prerequisites required for this particular Playwright framework.
+
+<br>
+
+## Extensions
+
+Install the following playwright extensions.
+
+<br>
+
+<u> Playwright Test for VSCode</u>
+Used for running Playwright Test tests in Visual Studio Code
+
+<br>
+
+<u>SQLRools</u>
+With SQLTools in VSCode, you can streamline your database workflow, making it a valuable tool for developers who interact with MySQL or MariaDB databases regularly. SQLTools is a versatile extension for Visual Studio Code (VSCode), designed to simplify database management tasks.
+
+<br>
+
+<u> Prettier - Code formatter</u>
+Prettier is a code formatter that formats javascript, typescript, html and many other formats
+
+<br>
+
+<u>ESLint</u>
+inters check your code for syntax errors and highlight errors to make sure you can quickly find and fix them. ESLint is a linter that you can integrate into your Visual Studio Code setup to ensure code integrity.
+
+<br>
+
+  <img src="Playwright Extensions.png" alt="Sample Image" width="600" height="300">
+
+<br>
+
+##### Preferences Setting
+
+under File > Preferences > Settings:
+
+- Set Default Formatter to Prettier – Code formatter
+- Enable Format On Save
+
+<br>
+
+## Dependencies
+
+<br>
+
+##### Install dependencies in VS code
+
+First check if you have Nodejs and NPM installed. To do this, type inthe following command in the terminal
+
+- Check version of npm installed: npm --version
+
+  - If the npm package isnt install, from the terminal type in: npm install
+  - Note, this is the node packages installer that gets installed along with node
+
+- Check Version of node installed: node --version
+  - If node is not installed, navigate to: nodejs.org/en/download/ and download the correct version for your operating system
+  - Once installed, open a new command window and type in: node --version
+
+<br>
+
+##### Install playwright with Typescript
+
+NOTE: the below is required for each Playwright project created
+
+To install playwight from the visual studio extensionsm, navigate to:
+
+- View menu > Command Palette
+
+  - <img src="Playwright install image 1.png" alt="Sample Image" width="500" height="140">
+
+<br>
+
+- Next, in the command palette, type in "Playwright", and the click on "Test: Install Playwright"
+
+  - <img src="Playwright install image Palette.png" alt="Sample Image" width="1000" height="325">
+
+<br>
+
+- Ensure the desired browsers are checked, and if youre planning on running the tests via a CICD pipeline, check "Add GitHub Actionsworkflow"
+  - <img src="Playwright install image browsers Download.png" alt="Sample Image" width="500" height="150">
+  - Note, as you can see from the screenshot, Playwright is installed using the Typescript language by deafult, if you wish to use JavsScript instead, ensure you check the box.
+
+<br>
+
+- Click "ok" and navigate through the install process.
+
+<br>
+
+##### Updating the version of playwright
+
+To update Playwright to the latest version run the following command:
+
+- npm install -D @playwright/test@latest
+
+<br>
+
+Also download new browser binaries and their dependencies:
+
+- npx playwright install --with-deps
+
+<br>
+
+##### Updating depandant packages
+
+For each new playwright project, to ensure the latest packages are installed, in VS code open a terminal and run:
+
+- npm install
+
+<br>
+
+##### Environment Management
+
+To be able to run the code across different environments run:
+
+- npm i dotenv --save-dev
+  - Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
+
+<br>
+
+- npm i cross-env --save-dev
+  - cross-env makes it so you can have a single command without worrying about setting or using the environment variable properly for the platform
+
+<br>
+
+##### Creating the .env.xxxx file - environment varibles
+
+Next, add .env.uat and .env.preprod files to the root directory and populate them with the relevant test data:
+
+###### DB_CONNECTION=
+
+###### DB_USERNAME=
+
+###### DB_PASSWORD=
+
+###### ENV_URL=
+
+###### API_URL=
+
+###### BEARER_TOKEN=
+
+- NOTE: The bearer token is a cryptic string, usually generated by the server in response to a login request. The client must send this token in the Authorization header when making requests to protected resources: 1. Authorization: Bearer
