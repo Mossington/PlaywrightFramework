@@ -21,7 +21,7 @@ This can be used when setting up your page object models. This format means the 
 _**note**: this piece of code is simply the locator taken from the browser ('link', { name: 'Fake Hyperlink')_
 <br>
 
-This is a an inline version of the above, only to be used as single use. These are guenually higher maintence that the exampel above.
+This is a an inline version of the above, only to be used as single use. These are guenually higher maintence than the exampel above.
 
 - await page.getByRole('link', { name: 'Get started' }).click();
 
