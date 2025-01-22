@@ -74,17 +74,6 @@ while (sports.includes(desiredString)) {
   break;
 }
 
-let allFruits: Array<string> = ["Apple", "Orange", "Banana"];
-for (var i = 0; i < allFruits.length; ) {
-  if (allFruits.includes("Banana")) {
-    console.log(`Array contains the string item.`);
-    console.log(allFruits[i]);
-    break;
-  } else {
-    i++;
-  }
-}
-
 /*------------------------------------------------------------------------------------------------------------*/
 //Switch
 /*------------------------------------------------------------------------------------------------------------*/
